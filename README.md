@@ -20,7 +20,7 @@ For the built-in bulk link generator, open the invitation with `?admin=1`, enter
 - Visible event copy, address, and map link: `index.html`
 - Route simulation and visual design: `styles.css` and the map section of `index.html`
 
-The generated isometric campus guide lives at `assets/hcmus-3d-campus-map.png`. Route highlights and labels are controlled by the `.map-canvas` styles and `selectRoute()` in `app.js`.
+The researched inter-campus route guide lives at `assets/lhp-to-hcmus-3d-route-v2.png`. It shows the recommended route from parking inside Lê Hồng Phong, out to Nguyễn Văn Cừ, through the HCMUS main gate, and into Hall I. Route highlights and labels are controlled by the `.map-canvas` styles and `selectRoute()` in `app.js`.
 
 ## Local preview
 

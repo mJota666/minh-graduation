@@ -50,8 +50,8 @@ function selectRoute(route) {
   const campusMap = document.querySelector("#campus-map");
   campusMap.dataset.activeRoute = route;
   document.querySelector("#map-route-label").textContent = route === "lhp"
-    ? "From Lê Hồng Phong parking: enter through the Main Gate"
-    : "From HCMUS parking: enter through the vehicle gate";
+    ? "Bãi xe LHP → Cổng LHP → Nguyễn Văn Cừ → Cổng chính KHTN → Hội trường I"
+    : "Bãi xe KHTN → lối nội bộ → Hội trường I";
   document.querySelector("#route-distance").textContent = routeCopy[route].distance;
   document.querySelector("#route-description").textContent = routeCopy[route].description;
 }
