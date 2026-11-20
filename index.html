@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#071d19" />
+    <meta name="description" content="A personal invitation to Minh's graduation ceremony." />
+    <meta property="og:title" content="Minh is graduating!" />
+    <meta property="og:description" content="You are warmly invited to celebrate on November 26, 2026." />
+    <title>Minh's Graduation Invitation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Gloock&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <main>
+      <section class="hero" aria-labelledby="invitation-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Class of 2026 · Personal invitation</p>
+          <p class="address">Dear <span data-guest>my dear friend</span>,</p>
+          <h1 id="invitation-title">A chapter closes.<br /><em>Come celebrate</em><br />the next one.</h1>
+          <p class="intro">I would be truly happy to have you there as I mark the end of this journey—and the beginning of everything after it.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#details">View the invitation</a>
+            <button class="button button-quiet" id="music-toggle" type="button" aria-pressed="false">Ambient sound: off</button>
+          </div>
+        </div>
+
+        <div class="card-stage" aria-label="Interactive graduation invitation card">
+          <div class="halo"></div>
+          <div class="invitation-card" id="invitation-card" tabindex="0" role="button" aria-label="Open invitation card" aria-expanded="false">
+            <div class="card-cover">
+              <div class="cap-mark" aria-hidden="true">
+                <span class="cap-top"></span><span class="cap-base"></span><span class="tassel"></span>
+              </div>
+              <p class="cover-small">An invitation from</p>
+              <p class="cover-name">Minh</p>
+              <div class="cover-rule"></div>
+              <p class="cover-date">26 · 11 · 2026</p>
+              <span class="open-hint">Tap to open</span>
+            </div>
+            <div class="card-inside">
+              <p class="inside-kicker">Graduation day</p>
+              <p class="inside-title">Made it—with a little help from people like you.</p>
+              <p class="inside-note">Thursday · 26 November 2026<br />University of Science Main Hall</p>
+              <span class="wax-seal">M</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="details" id="details" aria-labelledby="details-title">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Save the moment</p>
+          <h2 id="details-title">Thursday,<br />November 26</h2>
+        </div>
+        <div class="detail-grid reveal">
+          <article>
+            <span>01</span>
+            <h3>When</h3>
+            <p><strong>Thursday, November 26, 2026</strong><br />Ceremony time to be confirmed</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Where</h3>
+            <p><strong>University of Science Main Hall</strong><br />227 Nguyễn Văn Cừ, District 5, HCMC</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Dress</h3>
+            <p><strong>Come as your best self</strong><br />Smart casual; cameras encouraged</p>
+          </article>
+        </div>
+        <div class="countdown reveal" aria-label="Countdown to graduation">
+          <div><strong id="days">00</strong><span>days</span></div>
+          <div><strong id="hours">00</strong><span>hours</span></div>
+          <div><strong id="minutes">00</strong><span>minutes</span></div>
+          <div><strong id="seconds">00</strong><span>seconds</span></div>
+        </div>
+      </section>
+
+      <section class="journey" id="journey" aria-labelledby="journey-title">
+        <div class="journey-copy reveal">
+          <p class="eyebrow">Getting there</p>
+          <h2 id="journey-title">Two places to park.<br /><em>One short walk.</em></h2>
+          <p>If you are arriving by scooter, parking at Lê Hồng Phong High School for the Gifted is the easiest option. University parking is available as an alternative.</p>
+          <div class="route-tabs" role="tablist" aria-label="Choose a parking route">
+            <button class="route-tab active" role="tab" aria-selected="true" data-route="lhp">
+              <span>Recommended</span>Lê Hồng Phong parking
+            </button>
+            <button class="route-tab" role="tab" aria-selected="false" data-route="hcmus">
+              <span>Alternative</span>University parking
+            </button>
+          </div>
+          <div class="route-summary" aria-live="polite">
+            <strong id="route-distance">A short walk</strong>
+            <span id="route-description">Park at Lê Hồng Phong, then follow Nguyễn Văn Cừ to the University of Science main entrance.</span>
+          </div>
+        </div>
+
+        <div class="map-shell reveal" aria-label="Animated route simulation to the main hall">
+          <div class="map-toolbar"><span>Route preview</span><span class="live-pill">Guided</span></div>
+          <div class="map-canvas">
+            <div class="map-grid"></div>
+            <div class="building school"><span>LHP</span><small>Parking</small></div>
+            <div class="building university"><span>HCMUS</span><small>Parking</small></div>
+            <div class="building hall"><span>Main Hall</span><small>Meet here</small></div>
+            <div class="road road-one"></div><div class="road road-two"></div>
+            <svg class="route-svg" viewBox="0 0 700 520" preserveAspectRatio="none" aria-hidden="true">
+              <path id="route-path-lhp" class="route-path active" d="M 112 380 C 190 330, 210 250, 300 245 S 435 280, 530 145" />
+              <path id="route-path-hcmus" class="route-path" d="M 555 405 C 535 340, 490 295, 530 145" />
+            </svg>
+            <div class="walker" id="walker" aria-hidden="true">●</div>
+            <div class="compass" aria-hidden="true">N</div>
+          </div>
+          <p class="map-note">A stylized route preview. Your detailed 3D map will replace this scene later.</p>
+        </div>
+      </section>
+
+      <section class="closing reveal" aria-labelledby="closing-title">
+        <p class="eyebrow">One day, many memories</p>
+        <h2 id="closing-title">Your presence is<br />the best gift.</h2>
+        <p>I hope you can join me, <span data-guest>my dear friend</span>.</p>
+        <div class="closing-actions">
+          <a class="button button-light" href="https://maps.google.com/?q=University+of+Science+227+Nguyen+Van+Cu+Ho+Chi+Minh+City" target="_blank" rel="noreferrer">Open in Google Maps</a>
+          <button class="button button-outline" id="share-button" type="button">Share invitation</button>
+        </div>
+        <p class="signature">— Minh</p>
+      </section>
+
+      <section class="link-studio" id="link-studio" hidden aria-labelledby="studio-title">
+        <div>
+          <p class="eyebrow">Host tool</p>
+          <h2 id="studio-title">Personal link generator</h2>
+          <p>Enter one guest name per line. Links are generated locally and nothing is uploaded.</p>
+        </div>
+        <textarea id="guest-list" rows="8" placeholder="An Nguyen&#10;Bao Tran&#10;Chi Le"></textarea>
+        <div class="studio-actions">
+          <button class="button button-primary" id="generate-links" type="button">Generate links</button>
+          <button class="button button-quiet" id="copy-links" type="button">Copy all</button>
+        </div>
+        <div id="generated-links" class="generated-links"></div>
+      </section>
+    </main>
+    <footer><span>Minh · Graduation 2026</span><span>Made with gratitude</span></footer>
+  </body>
+</html>
