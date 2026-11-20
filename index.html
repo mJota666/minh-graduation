@@ -103,20 +103,13 @@
 
         <div class="map-shell reveal" aria-label="Animated route simulation to the main hall">
           <div class="map-toolbar"><span>Route preview</span><span class="live-pill">Guided</span></div>
-          <div class="map-canvas">
-            <div class="map-grid"></div>
-            <div class="building school"><span>LHP</span><small>Parking</small></div>
-            <div class="building university"><span>HCMUS</span><small>Parking</small></div>
-            <div class="building hall"><span>Main Hall</span><small>Meet here</small></div>
-            <div class="road road-one"></div><div class="road road-two"></div>
-            <svg class="route-svg" viewBox="0 0 700 520" preserveAspectRatio="none" aria-hidden="true">
-              <path id="route-path-lhp" class="route-path active" d="M 112 380 C 190 330, 210 250, 300 245 S 435 280, 530 145" />
-              <path id="route-path-hcmus" class="route-path" d="M 555 405 C 535 340, 490 295, 530 145" />
-            </svg>
-            <div class="walker" id="walker" aria-hidden="true">●</div>
-            <div class="compass" aria-hidden="true">N</div>
+          <div class="map-canvas" id="campus-map" data-active-route="lhp">
+            <img src="assets/hcmus-3d-campus-map.png" alt="Isometric 3D map of the University of Science campus showing the Main Gate, HCMUS parking, and walking routes to the Main Hall" />
+            <div class="route-spotlight spotlight-main" aria-hidden="true"></div>
+            <div class="route-spotlight spotlight-parking" aria-hidden="true"></div>
+            <div class="map-route-label" id="map-route-label">From Lê Hồng Phong parking: enter through the Main Gate</div>
           </div>
-          <p class="map-note">A stylized route preview. Your detailed 3D map will replace this scene later.</p>
+          <p class="map-note">3D campus guide · Tap a parking option to highlight its arrival point.</p>
         </div>
       </section>
 

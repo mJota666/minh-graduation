@@ -47,7 +47,11 @@ function selectRoute(route) {
     tab.setAttribute("aria-selected", String(selected));
   });
   document.querySelectorAll(".route-path").forEach((path) => path.classList.toggle("active", path.id === `route-path-${route}`));
-  document.querySelector("#walker").className = `walker ${route}`;
+  const campusMap = document.querySelector("#campus-map");
+  campusMap.dataset.activeRoute = route;
+  document.querySelector("#map-route-label").textContent = route === "lhp"
+    ? "From Lê Hồng Phong parking: enter through the Main Gate"
+    : "From HCMUS parking: enter through the vehicle gate";
   document.querySelector("#route-distance").textContent = routeCopy[route].distance;
   document.querySelector("#route-description").textContent = routeCopy[route].description;
 }

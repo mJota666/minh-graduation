@@ -20,7 +20,7 @@ For the built-in bulk link generator, open the invitation with `?admin=1`, enter
 - Visible event copy, address, and map link: `index.html`
 - Route simulation and visual design: `styles.css` and the map section of `index.html`
 
-The current route map is explicitly a stylized placeholder. Replace the `.map-canvas` contents when the final 3D map is ready.
+The generated isometric campus guide lives at `assets/hcmus-3d-campus-map.png`. Route highlights and labels are controlled by the `.map-canvas` styles and `selectRoute()` in `app.js`.
 
 ## Local preview
 
