@@ -50,6 +50,7 @@ h2 { margin: 0; font-size: clamp(3rem, 6vw, 6.5rem); line-height: .95; letter-sp
 .card-countdown div { display: grid; gap: .2rem; text-align: center; }
 .card-countdown strong { font-family: "Lora", serif; font-size: 1.15rem; line-height: 1; }
 .card-countdown span { color: rgba(255,255,255,.6); font-size: .55rem; letter-spacing: .06em; text-transform: uppercase; }
+.scroll-hint { margin: .55rem 0 0; color: rgba(7,26,47,.48); font-size: .62rem; }
 .event-calendar { width: 100%; }
 .calendar-month { display: block; margin-bottom: .55rem; font-size: .78rem; }
 .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: .18rem; }
