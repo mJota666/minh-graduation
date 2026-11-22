@@ -20,7 +20,7 @@ For the built-in bulk link generator, open the invitation with `?admin=1`, enter
 - Visible event copy, address, and map link: `index.html`
 - Route simulation and visual design: `styles.css` and the map section of `index.html`
 
-The researched inter-campus route guide lives at `assets/lhp-to-hcmus-verified-route-v3.png`. It corrects the earlier geography: LHP is directly north of HCMUS and both campuses are on the west side of Nguyễn Văn Cừ, so the walking route does not cross the road. It shows the recommended underground parking at LHP, the southern HCMUS parking gate, and the route to Hall I. Route highlights and labels are controlled by the `.map-canvas` styles and `selectRoute()` in `app.js`.
+The route guide is a responsive inline SVG in `index.html`. It follows the supplied street-view references: LHP at 235, the Education Publishing House block at 231, then HCMUS at 227 Nguyễn Văn Cừ. Both routes stay on the west side of the street. Route switching is controlled by `.map-route` in `styles.css` and `selectRoute()` in `app.js`.
 
 ## Local preview
 

@@ -1,15 +1,70 @@
 const CONFIG = {
-  graduateName: "Minh",
+  graduateName: "Quang Minh",
   ceremonyAt: "2026-11-26T08:00:00+07:00",
-  fallbackGuest: "my dear friend",
+  fallbackGuest: "bạn",
 };
+
+function calendarDays(year, month) {
+  const firstWeekday = (new Date(year, month, 1).getDay() + 6) % 7;
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  return [...Array(firstWeekday).fill(null), ...Array.from({ length: daysInMonth }, (_, index) => index + 1)];
+}
+
+console.assert(calendarDays(2026, 10).length === 36 && calendarDays(2026, 10)[6] === 1, "Calendar layout failed");
+
+function vietnamToday() {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Ho_Chi_Minh",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  }).formatToParts(new Date());
+  return Object.fromEntries(parts.filter(({ type }) => type !== "literal").map(({ type, value }) => [type, Number(value)]));
+}
+
+function renderEventCalendar() {
+  const calendar = document.querySelector("#event-calendar");
+  const [year, eventMonth, eventDay] = CONFIG.ceremonyAt.slice(0, 10).split("-").map(Number);
+  const month = eventMonth - 1;
+  const today = vietnamToday();
+  const header = document.createElement("strong");
+  header.className = "calendar-month";
+  header.textContent = `${eventDay} · Tháng ${month + 1} / ${year}`;
+  const grid = document.createElement("div");
+  grid.className = "calendar-grid";
+  ["T2", "T3", "T4", "T5", "T6", "T7", "CN"].forEach((label) => {
+    const weekday = document.createElement("span");
+    weekday.className = "calendar-weekday";
+    weekday.textContent = label;
+    grid.append(weekday);
+  });
+  calendarDays(year, month).forEach((day) => {
+    const cell = document.createElement("span");
+    cell.className = "calendar-day";
+    if (day) {
+      cell.textContent = day;
+      cell.classList.toggle("today", today.year === year && today.month === month + 1 && today.day === day);
+      cell.classList.toggle("event-day", day === eventDay);
+      if (day === eventDay) {
+        cell.setAttribute("aria-label", `${day} tháng ${month + 1}, ngày lễ tốt nghiệp`);
+      }
+    } else {
+      cell.setAttribute("aria-hidden", "true");
+    }
+    grid.append(cell);
+  });
+  calendar.replaceChildren(header, grid);
+}
+
+renderEventCalendar();
+setInterval(renderEventCalendar, 60000);
 
 const params = new URLSearchParams(window.location.search);
 const rawGuest = params.get("guest") || params.get("name") || params.get("to");
 const guest = rawGuest?.trim().slice(0, 80) || CONFIG.fallbackGuest;
 
 document.querySelectorAll("[data-guest]").forEach((node) => { node.textContent = guest; });
-document.title = rawGuest ? `${guest}, you're invited!` : `${CONFIG.graduateName}'s Graduation Invitation`;
+document.title = rawGuest ? `${guest}, Quang Minh mời bạn đến lễ tốt nghiệp!` : `Thiệp mời tốt nghiệp của ${CONFIG.graduateName}`;
 
 const card = document.querySelector("#invitation-card");
 function toggleCard() {
@@ -36,64 +91,26 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-const routeCopy = {
-  lhp: { distance: "Recommended parking", description: "Park at Lê Hồng Phong, then follow Nguyễn Văn Cừ to the University of Science main entrance." },
-  hcmus: { distance: "Closest alternative", description: "Enter the university parking area, then walk across campus toward the Main Hall." },
-};
 function selectRoute(route) {
   document.querySelectorAll(".route-tab").forEach((tab) => {
     const selected = tab.dataset.route === route;
     tab.classList.toggle("active", selected);
     tab.setAttribute("aria-selected", String(selected));
   });
-  document.querySelectorAll(".route-path").forEach((path) => path.classList.toggle("active", path.id === `route-path-${route}`));
+  document.querySelectorAll("[data-map-route]").forEach((path) => path.classList.toggle("active", path.dataset.mapRoute === route));
   const campusMap = document.querySelector("#campus-map");
   campusMap.dataset.activeRoute = route;
   document.querySelector("#map-route-label").textContent = route === "lhp"
-    ? "Bãi xe ngầm LHP → đi về phía nam → Cổng chính HCMUS → Hội trường I"
-    : "Cổng bãi xe HCMUS (đầu phía nam) → lối nội bộ → Hội trường I";
-  document.querySelector("#route-distance").textContent = routeCopy[route].distance;
-  document.querySelector("#route-description").textContent = routeCopy[route].description;
+    ? "Hầm xe LHP · Cổng chính HCMUS"
+    : "Nguyễn Văn Cừ · Cổng bãi xe HCMUS";
 }
 document.querySelectorAll(".route-tab").forEach((tab) => tab.addEventListener("click", () => selectRoute(tab.dataset.route)));
-selectRoute("lhp");
+selectRoute("hcmus");
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add("visible"); });
 }, { threshold: .12 });
 document.querySelectorAll(".reveal").forEach((node) => revealObserver.observe(node));
-
-const shareButton = document.querySelector("#share-button");
-shareButton.addEventListener("click", async () => {
-  const data = { title: document.title, text: `${guest}, join me for my graduation!`, url: window.location.href };
-  try {
-    if (navigator.share) await navigator.share(data);
-    else { await navigator.clipboard.writeText(window.location.href); shareButton.textContent = "Link copied"; }
-  } catch (error) { if (error.name !== "AbortError") shareButton.textContent = "Copy the URL above"; }
-});
-
-const musicButton = document.querySelector("#music-toggle");
-let audioContext;
-let ambience;
-musicButton.addEventListener("click", () => {
-  if (ambience) {
-    ambience.forEach((oscillator) => oscillator.stop());
-    ambience = null;
-    musicButton.textContent = "Ambient sound: off";
-    musicButton.setAttribute("aria-pressed", "false");
-    return;
-  }
-  audioContext ||= new (window.AudioContext || window.webkitAudioContext)();
-  const gain = audioContext.createGain();
-  gain.gain.value = .018;
-  gain.connect(audioContext.destination);
-  ambience = [196, 246.94, 293.66].map((frequency) => {
-    const oscillator = audioContext.createOscillator();
-    oscillator.type = "sine"; oscillator.frequency.value = frequency; oscillator.connect(gain); oscillator.start(); return oscillator;
-  });
-  musicButton.textContent = "Ambient sound: on";
-  musicButton.setAttribute("aria-pressed", "true");
-});
 
 const studio = document.querySelector("#link-studio");
 if (params.get("admin") === "1") studio.hidden = false;
@@ -109,5 +126,5 @@ document.querySelector("#generate-links").addEventListener("click", generateLink
 document.querySelector("#copy-links").addEventListener("click", async (event) => {
   if (!output.children.length) generateLinks();
   await navigator.clipboard.writeText([...output.children].map((link) => link.href).join("\n"));
-  event.currentTarget.textContent = "Copied";
+  event.currentTarget.textContent = "Đã sao chép";
 });
