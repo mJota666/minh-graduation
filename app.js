@@ -30,6 +30,11 @@ function renderEventCalendar() {
   const header = document.createElement("strong");
   header.className = "calendar-month";
   header.textContent = `${eventDay} · Tháng ${month + 1} / ${year}`;
+  const legend = document.createElement("span");
+  legend.className = "calendar-legend";
+  legend.textContent = today.year === year && today.month === month + 1
+    ? `${today.day} today · ${eventDay} graduation day`
+    : `${eventDay} graduation day`;
   const grid = document.createElement("div");
   grid.className = "calendar-grid";
   ["T2", "T3", "T4", "T5", "T6", "T7", "CN"].forEach((label) => {
@@ -53,7 +58,7 @@ function renderEventCalendar() {
     }
     grid.append(cell);
   });
-  calendar.replaceChildren(header, grid);
+  calendar.replaceChildren(header, legend, grid);
 }
 
 renderEventCalendar();

@@ -52,6 +52,7 @@ h2 { margin: 0; font-size: clamp(3rem, 6vw, 6.5rem); line-height: .95; letter-sp
 .card-countdown span { color: rgba(255,255,255,.6); font-size: .55rem; letter-spacing: .06em; text-transform: uppercase; }
 .event-calendar { width: 100%; }
 .calendar-month { display: block; margin-bottom: .55rem; font-size: .78rem; }
+.calendar-legend { display: none; }
 .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: .18rem; }
 .calendar-weekday, .calendar-day { min-width: 0; display: grid; place-items: center; border-radius: 50%; font-size: .64rem; }
 .calendar-day { width: 1.65rem; height: 1.65rem; justify-self: center; }
@@ -128,11 +129,15 @@ h2 { margin: 0; font-size: clamp(3rem, 6vw, 6.5rem); line-height: .95; letter-sp
 }
 @media (max-width: 560px) {
   h1 { font-size: clamp(3.25rem, 17vw, 5.4rem); }
-  .hero { padding: 5rem 1.2rem 2rem; }
+  .hero { min-height: auto; padding: 1.5rem 1rem 3rem; overflow: visible; }
   .hero-actions .button { width: 100%; }
-  .card-stage { min-height: 520px; }
-  .invitation-card.open { transform: translateX(15%) rotateY(-172deg); }
-  .card-inside { padding: 1.7rem 1.35rem; }
+  .card-stage { min-height: 570px; }
+  .invitation-card { width: min(330px, 88vw); height: 570px; aspect-ratio: auto; }
+  .invitation-card.open { transform: rotateY(-180deg); }
+  .card-inside { justify-content: flex-start; padding: 1.4rem 1.15rem; }
+  .calendar-legend { display: block; margin: -.15rem 0 .45rem; color: var(--orange); font-family: "Caveat", cursive; font-size: .78rem; font-weight: 700; }
+  .calendar-day.today::after, .calendar-day.event-day::after { display: none; }
+  .card-countdown { margin-top: .75rem; padding: .7rem .45rem; }
   .card-countdown strong { font-size: 1.05rem; }
   .map-toolbar { padding: 0 .9rem; }
   .map-link { font-size: .68rem; }
