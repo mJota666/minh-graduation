@@ -30,11 +30,6 @@ function renderEventCalendar() {
   const header = document.createElement("strong");
   header.className = "calendar-month";
   header.textContent = `${eventDay} · Tháng ${month + 1} / ${year}`;
-  const legend = document.createElement("span");
-  legend.className = "calendar-legend";
-  legend.textContent = today.year === year && today.month === month + 1
-    ? `${today.day} today · ${eventDay} graduation day`
-    : `${eventDay} graduation day`;
   const grid = document.createElement("div");
   grid.className = "calendar-grid";
   ["T2", "T3", "T4", "T5", "T6", "T7", "CN"].forEach((label) => {
@@ -58,7 +53,7 @@ function renderEventCalendar() {
     }
     grid.append(cell);
   });
-  calendar.replaceChildren(header, legend, grid);
+  calendar.replaceChildren(header, grid);
 }
 
 renderEventCalendar();
@@ -102,9 +97,24 @@ function selectRoute(route) {
     tab.classList.toggle("active", selected);
     tab.setAttribute("aria-selected", String(selected));
   });
-  document.querySelectorAll("[data-map-route]").forEach((path) => path.classList.toggle("active", path.dataset.mapRoute === route));
+  document.querySelectorAll("[data-map-route]").forEach((path) => path.classList.toggle("active", path.dataset.mapRoute === (route === "ride" ? "hcmus" : route)));
+  document.querySelector("#ride-destination").hidden = route !== "ride";
 }
 document.querySelectorAll(".route-tab").forEach((tab) => tab.addEventListener("click", () => selectRoute(tab.dataset.route)));
+document.querySelector("#copy-destination").addEventListener("click", async (event) => {
+  const destination = "HCMUS VNUHCM - University of Science";
+  event.currentTarget.textContent = "Đã sao chép";
+  try {
+    await navigator.clipboard.writeText(destination);
+  } catch {
+    const input = document.createElement("textarea");
+    input.value = destination;
+    document.body.append(input);
+    input.select();
+    document.execCommand("copy");
+    input.remove();
+  }
+});
 selectRoute("hcmus");
 
 const revealObserver = new IntersectionObserver((entries) => {
