@@ -72,9 +72,8 @@
               <title id="map-title">Sơ đồ cổng vào và bãi xe HCMUS</title>
               <desc id="map-description">Mặt bằng nhìn từ trên xuống. Đường Nguyễn Văn Cừ ở bên phải; từ bắc xuống nam là Lê Hồng Phong, số 231 và HCMUS.</desc>
               <defs>
-                <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="13" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#0d7180"/></marker>
-                <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="13" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#2563a6"/></marker>
-                <marker id="arrow-orange" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="13" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#20a6c7"/></marker>
+                <marker id="arrow-lhp" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="13" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#2563eb"/></marker>
+                <marker id="arrow-hcmus" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="13" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#008aa6"/></marker>
               </defs>
 
               <rect width="800" height="900" class="map-ground"/>
@@ -126,13 +125,13 @@
               </g>
 
               <g class="map-route" data-map-route="lhp">
-                <path d="M760 238H625" class="route-line route-line-red" marker-end="url(#arrow-red)"/>
-                <path d="M625 264H648V634" class="route-line route-line-blue" marker-end="url(#arrow-blue)"/>
-                <path d="M648 634Q646 650 625 650H448" class="route-line route-line-orange" marker-end="url(#arrow-orange)"/>
+                <path d="M760 238H625" class="route-line route-line-lhp" marker-end="url(#arrow-lhp)"/>
+                <path d="M625 264H648V634" class="route-line route-line-lhp" marker-end="url(#arrow-lhp)"/>
+                <path d="M648 634Q646 650 625 650H448" class="route-line route-line-lhp" marker-end="url(#arrow-lhp)"/>
               </g>
               <g class="map-route active" data-map-route="hcmus">
-                <path d="M760 469H648" class="route-line route-line-blue" marker-end="url(#arrow-blue)"/>
-                <path d="M648 469H565" class="route-line route-line-orange" marker-end="url(#arrow-orange)"/>
+                <path d="M760 469H648" class="route-line route-line-hcmus" marker-end="url(#arrow-hcmus)"/>
+                <path d="M648 469H565" class="route-line route-line-hcmus" marker-end="url(#arrow-hcmus)"/>
               </g>
             </svg>
           </div>

@@ -100,9 +100,8 @@ h2 { margin: 0; font-size: clamp(3rem, 6vw, 6.5rem); line-height: .95; letter-sp
 .map-route { opacity: 0; transition: opacity .35s; pointer-events: none; }
 .map-route.active { opacity: 1; }
 .route-line { fill: none; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 5 14; animation: route-flow 1s linear infinite; paint-order: stroke; }
-.route-line-red { stroke: #0d7180; }
-.route-line-blue { stroke: #2563a6; }
-.route-line-orange { stroke: #20a6c7; }
+.route-line-lhp { stroke: #2563eb; }
+.route-line-hcmus { stroke: #008aa6; }
 @keyframes route-flow { to { stroke-dashoffset: -24; } }
 .closing { padding: clamp(6rem, 13vw, 13rem) 1.5rem; text-align: center; background: var(--orange); color: white; }
 .closing h2 { max-width: 900px; margin-inline: auto; font-size: clamp(2.8rem, 7vw, 7rem); }
