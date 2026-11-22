@@ -50,16 +50,16 @@
         </div>
       </section>
 
-      <section class="journey" id="journey" aria-labelledby="journey-title">
+      <section class="journey ride-mode" id="journey" aria-labelledby="journey-title">
         <div class="journey-copy reveal">
           <p class="eyebrow">Di chuyển</p>
-          <h2 id="journey-title">Chọn bãi xe.</h2>
-          <div class="route-tabs" role="tablist" aria-label="Chọn đường từ bãi xe">
-            <button class="route-tab active" role="tab" aria-selected="true" data-route="hcmus">HCMUS</button>
+          <h2 id="journey-title">Chọn cách đến.</h2>
+          <div class="route-tabs" role="tablist" aria-label="Chọn cách di chuyển">
+            <button class="route-tab" role="tab" aria-selected="false" data-route="hcmus">HCMUS</button>
             <button class="route-tab" role="tab" aria-selected="false" data-route="lhp">Lê Hồng Phong</button>
-            <button class="route-tab" role="tab" aria-selected="false" data-route="ride">Grab / GreenSM</button>
+            <button class="route-tab recommended active" role="tab" aria-selected="true" data-route="ride"><span>Grab / GreenSM</span><small>Đề xuất</small></button>
           </div>
-          <div class="ride-destination" id="ride-destination" hidden>
+          <div class="ride-destination" id="ride-destination">
             <div>
               <small>Copy và dán vào ô điểm đến</small>
               <span>HCMUS VNUHCM - University of Science</span>
@@ -68,7 +68,7 @@
           </div>
         </div>
 
-        <div class="map-shell reveal" aria-label="Sơ đồ cổng vào và bãi xe HCMUS">
+        <div class="map-shell reveal" aria-label="Sơ đồ cổng vào và bãi xe HCMUS" hidden>
           <div class="map-toolbar">
             <span>Bản đồ</span>
             <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Trường+Đại+học+Khoa+học+Tự+nhiên+227+Nguyễn+Văn+Cừ+Phường+Chợ+Quán+TP.HCM" target="_blank" rel="noreferrer">

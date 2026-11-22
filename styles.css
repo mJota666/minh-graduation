@@ -52,7 +52,8 @@ h2 { margin: 0; font-size: clamp(3rem, 6vw, 6.5rem); line-height: .95; letter-sp
 .card-countdown span { color: rgba(255,255,255,.6); font-size: .55rem; letter-spacing: .06em; text-transform: uppercase; }
 .scroll-hint { margin: .55rem 0 0; color: rgba(7,26,47,.48); font-size: .62rem; }
 .event-calendar { width: 100%; }
-.calendar-month { display: block; margin-bottom: .55rem; font-size: .78rem; }
+.calendar-month { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; margin-bottom: .55rem; font-size: .78rem; }
+.calendar-today-note { color: var(--orange); font-family: "Caveat", cursive; font-size: .85rem; }
 .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: .18rem; }
 .calendar-weekday, .calendar-day { min-width: 0; display: grid; place-items: center; border-radius: 50%; font-size: .64rem; }
 .calendar-day { width: 1.65rem; height: 1.65rem; justify-self: center; }
@@ -60,13 +61,17 @@ h2 { margin: 0; font-size: clamp(3rem, 6vw, 6.5rem); line-height: .95; letter-sp
 .calendar-day.today, .calendar-day.event-day { position: relative; font-family: "Caveat", cursive; font-size: 1rem; font-weight: 700; z-index: 1; }
 .calendar-day.event-day { color: var(--orange); }
 .calendar-day.today::before, .calendar-day.event-day::before { content: ""; position: absolute; inset: -2px -4px; border: 2px solid var(--orange); border-radius: 48% 55% 45% 52%; transform: rotate(-9deg); }
-.calendar-day.today::after { content: "today"; position: absolute; right: 1.4rem; top: -1.2rem; width: max-content; padding-right: 1.35rem; color: var(--orange); background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 18'%3E%3Cpath d='M2 2c8 1 13 6 18 13m0 0-7-2m7 2-1-7' fill='none' stroke='%231689bd' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") right bottom / 1.2rem .9rem no-repeat; font-family: "Caveat", cursive; font-size: 1rem; font-weight: 700; transform: rotate(6deg); }
 .calendar-day.event-day::after { content: "graduation day"; position: absolute; left: 50%; top: 1.85rem; width: max-content; padding-top: 1rem; color: var(--orange); background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 18'%3E%3Cpath d='M19 16C18 10 17 6 15 2m0 0-4 6m4-6 5 5' fill='none' stroke='%231689bd' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center top / 1.5rem .9rem no-repeat; font-family: "Caveat", cursive; font-size: .9rem; font-weight: 700; transform: translateX(-50%); }
 .journey { display: grid; grid-template-columns: minmax(240px, .6fr) minmax(0, 1.4fr); min-height: 760px; background: var(--forest); color: white; }
+.journey.ride-mode { grid-template-columns: 1fr; min-height: 560px; }
 .journey-copy { padding: clamp(3rem, 6vw, 6rem); display: flex; flex-direction: column; justify-content: center; }
+.journey.ride-mode .journey-copy { width: min(100%, 720px); justify-self: center; }
 .route-tabs { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.5rem; }
 .route-tab { padding: .75rem 1rem; color: rgba(255,255,255,.7); background: transparent; border: 1px solid rgba(255,255,255,.22); border-radius: 999px; cursor: pointer; transition: .2s; }
 .route-tab.active { color: white; background: rgba(255,255,255,.08); border-color: var(--gold); }
+.route-tab.recommended { display: inline-flex; align-items: center; gap: .5rem; }
+.route-tab.recommended small { padding: .2rem .45rem; border-radius: 999px; color: var(--ink); background: var(--gold); font-size: .58rem; font-weight: 700; text-transform: uppercase; }
+.route-tab.recommended.active { box-shadow: 0 0 0 3px rgba(130,212,244,.12); }
 .ride-destination { display: flex; align-items: center; gap: .65rem; margin-top: 1rem; padding: .75rem .8rem; border: 1px solid rgba(255,255,255,.2); border-radius: 8px; color: rgba(255,255,255,.88); font-size: .78rem; line-height: 1.4; }
 .ride-destination[hidden] { display: none; }
 .ride-destination div { flex: 1; min-width: 0; }
@@ -74,6 +79,7 @@ h2 { margin: 0; font-size: clamp(3rem, 6vw, 6.5rem); line-height: .95; letter-sp
 .ride-destination small { margin-bottom: .15rem; color: rgba(255,255,255,.5); font-size: .64rem; }
 .ride-destination button { flex: none; padding: .55rem .7rem; border: 0; border-radius: 999px; color: var(--ink); background: var(--gold); font-size: .72rem; font-weight: 700; cursor: pointer; }
 .map-shell { width: min(100%, 640px); align-self: center; justify-self: center; margin: 3rem 4vw 3rem 0; background: #dcecf4; color: var(--ink); border-radius: 12px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,.3); }
+.map-shell[hidden] { display: none; }
 .map-toolbar { height: 56px; padding: 0 1.2rem; display: flex; align-items: center; justify-content: space-between; background: var(--paper); font-weight: 600; }
 .map-link { min-height: 38px; display: inline-flex; align-items: center; gap: .45rem; padding: .55rem .85rem; border-radius: 999px; color: white; background: #1689bd; font-size: .72rem; font-weight: 700; text-decoration: none; box-shadow: 0 8px 18px rgba(22,137,189,.28); transition: transform .2s, background .2s; }
 .map-link svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 2; }
@@ -141,7 +147,6 @@ h2 { margin: 0; font-size: clamp(3rem, 6vw, 6.5rem); line-height: .95; letter-sp
   .invitation-card { width: min(330px, 88vw); height: 570px; aspect-ratio: auto; }
   .invitation-card.open { transform: rotateY(-180deg); }
   .card-inside { justify-content: flex-start; padding: 1.4rem 1.15rem; }
-  .calendar-day.today::after { right: .9rem; top: -1rem; padding-right: 1rem; background-size: .9rem .7rem; font-size: .78rem; }
   .calendar-day.event-day::after { top: 1.7rem; padding-top: .85rem; background-size: 1rem .72rem; font-size: .78rem; }
   .card-countdown { margin-top: .75rem; padding: .7rem .45rem; }
   .card-countdown strong { font-size: 1.05rem; }

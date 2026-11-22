@@ -29,7 +29,15 @@ function renderEventCalendar() {
   const today = vietnamToday();
   const header = document.createElement("strong");
   header.className = "calendar-month";
-  header.textContent = `${eventDay} · Tháng ${month + 1} / ${year}`;
+  const monthLabel = document.createElement("span");
+  monthLabel.textContent = `${eventDay} · Tháng ${month + 1} / ${year}`;
+  header.append(monthLabel);
+  if (today.year === year && today.month === month + 1) {
+    const todayLabel = document.createElement("span");
+    todayLabel.className = "calendar-today-note";
+    todayLabel.textContent = `${today.day} · today`;
+    header.append(todayLabel);
+  }
   const grid = document.createElement("div");
   grid.className = "calendar-grid";
   ["T2", "T3", "T4", "T5", "T6", "T7", "CN"].forEach((label) => {
@@ -92,13 +100,16 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 function selectRoute(route) {
+  const rideMode = route === "ride";
   document.querySelectorAll(".route-tab").forEach((tab) => {
     const selected = tab.dataset.route === route;
     tab.classList.toggle("active", selected);
     tab.setAttribute("aria-selected", String(selected));
   });
-  document.querySelectorAll("[data-map-route]").forEach((path) => path.classList.toggle("active", path.dataset.mapRoute === (route === "ride" ? "hcmus" : route)));
-  document.querySelector("#ride-destination").hidden = route !== "ride";
+  document.querySelectorAll("[data-map-route]").forEach((path) => path.classList.toggle("active", path.dataset.mapRoute === route));
+  document.querySelector("#ride-destination").hidden = !rideMode;
+  document.querySelector(".map-shell").hidden = rideMode;
+  document.querySelector("#journey").classList.toggle("ride-mode", rideMode);
 }
 document.querySelectorAll(".route-tab").forEach((tab) => tab.addEventListener("click", () => selectRoute(tab.dataset.route)));
 document.querySelector("#copy-destination").addEventListener("click", async (event) => {
@@ -115,7 +126,7 @@ document.querySelector("#copy-destination").addEventListener("click", async (eve
     input.remove();
   }
 });
-selectRoute("hcmus");
+selectRoute("ride");
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add("visible"); });
