@@ -68,7 +68,9 @@ h2 { margin: 0; font-size: clamp(3rem, 6vw, 6.5rem); line-height: .95; letter-sp
 .route-tab.active { color: white; background: rgba(255,255,255,.08); border-color: var(--gold); }
 .ride-destination { display: flex; align-items: center; gap: .65rem; margin-top: 1rem; padding: .75rem .8rem; border: 1px solid rgba(255,255,255,.2); border-radius: 8px; color: rgba(255,255,255,.88); font-size: .78rem; line-height: 1.4; }
 .ride-destination[hidden] { display: none; }
-.ride-destination span { flex: 1; }
+.ride-destination div { flex: 1; min-width: 0; }
+.ride-destination small, .ride-destination span { display: block; }
+.ride-destination small { margin-bottom: .15rem; color: rgba(255,255,255,.5); font-size: .64rem; }
 .ride-destination button { flex: none; padding: .55rem .7rem; border: 0; border-radius: 999px; color: var(--ink); background: var(--gold); font-size: .72rem; font-weight: 700; cursor: pointer; }
 .map-shell { width: min(100%, 640px); align-self: center; justify-self: center; margin: 3rem 4vw 3rem 0; background: #dcecf4; color: var(--ink); border-radius: 12px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,.3); }
 .map-toolbar { height: 56px; padding: 0 1.2rem; display: flex; align-items: center; justify-content: space-between; background: var(--paper); font-weight: 600; }
