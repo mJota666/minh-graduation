@@ -72,54 +72,57 @@
               <title id="map-title">Sơ đồ cổng vào và bãi xe HCMUS</title>
               <desc id="map-description">Mặt bằng nhìn từ trên xuống. Đường Nguyễn Văn Cừ ở bên phải; từ bắc xuống nam là Lê Hồng Phong, số 231 và HCMUS.</desc>
               <defs>
-                <pattern id="map-grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#4c7690" stroke-width="1" opacity=".12"/></pattern>
                 <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="13" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#0d7180"/></marker>
                 <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="13" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#2563a6"/></marker>
                 <marker id="arrow-orange" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="13" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#20a6c7"/></marker>
               </defs>
 
               <rect width="800" height="900" class="map-ground"/>
-              <rect width="625" height="900" fill="url(#map-grid)"/>
               <path d="M670 0H800V900H670Z" class="map-road"/>
               <path d="M735 0V900" class="road-divider"/>
               <path d="M625 0H670V900H625Z" class="map-sidewalk"/>
               <text x="736" y="450" class="road-label" transform="rotate(90 736 450)">NGUYỄN VĂN CỪ</text>
-              <g class="north-mark" transform="translate(588 54)"><path d="M0 34V-10M0-10L-9 5M0-10L9 5"/><text x="0" y="53">BẮC</text></g>
 
               <g class="campus-zone lhp-zone">
-                <rect x="38" y="28" width="587" height="240" rx="5" class="site-boundary"/>
-                <rect x="92" y="78" width="470" height="124" rx="3" class="building building-lhp"/>
-                <text x="327" y="146" class="middle-label" text-anchor="middle">235 · TRƯỜNG LÊ HỒNG PHONG</text>
-                <g class="map-gate" transform="translate(625 238)"><path d="M0-20V20M-12-20V20"/><text x="-22" y="-27" text-anchor="end">Cổng hầm xe</text></g>
+                <rect x="38" y="28" width="587" height="240" rx="14" class="site-boundary"/>
+                <rect x="82" y="72" width="500" height="132" rx="10" class="map-building"/>
+                <text x="332" y="130" class="place-label">TRƯỜNG LÊ HỒNG PHONG</text>
+                <text x="332" y="158" class="place-number">235</text>
+                <g class="map-gate" transform="translate(625 238)"><path d="M0-18V18M-10-18V18"/><text x="-18" y="-24" text-anchor="end">Cổng hầm</text></g>
               </g>
 
               <g class="middle-block">
-                <rect x="38" y="282" width="587" height="104" rx="5" class="site-boundary middle-site"/>
-                <rect x="92" y="308" width="470" height="52" rx="3" class="building building-middle"/>
-                <text x="327" y="341" class="middle-label" text-anchor="middle">231 · NXB GIÁO DỤC</text>
+                <rect x="38" y="282" width="587" height="104" rx="14" class="site-boundary middle-site"/>
+                <rect x="82" y="304" width="500" height="60" rx="10" class="map-building"/>
+                <text x="332" y="328" class="place-label small">NXB GIÁO DỤC</text>
+                <text x="332" y="349" class="place-number">231</text>
               </g>
 
               <g class="campus-zone hcmus-zone">
-                <rect x="38" y="400" width="587" height="470" rx="5" class="site-boundary hcmus-site"/>
+                <rect x="38" y="400" width="587" height="470" rx="14" class="site-boundary hcmus-site"/>
                 <text x="64" y="438" class="campus-name">HCMUS · 227</text>
-                <path d="M76 470H136V826H76Z" class="building building-f"/>
+                <path d="M150 456V840M426 456V840M150 766H426" class="campus-walkway"/>
+                <path d="M150 620H566" class="campus-walkway campus-corridor"/>
+                <rect x="76" y="470" width="60" height="356" rx="10" class="map-building"/>
                 <text x="106" y="648" class="building-label" transform="rotate(-90 106 648)">F</text>
-                <path d="M170 470H408V520H170ZM170 548H408V598H170ZM170 626H408V676H170ZM170 704H408V754H170Z" class="building campus-blocks"/>
+                <rect x="170" y="470" width="238" height="50" rx="10" class="map-building"/>
+                <rect x="170" y="548" width="238" height="50" rx="10" class="map-building"/>
+                <rect x="170" y="626" width="238" height="50" rx="10" class="map-building"/>
+                <rect x="170" y="704" width="238" height="50" rx="10" class="map-building"/>
                 <text x="289" y="495" class="building-label">E</text>
                 <text x="289" y="573" class="building-label">A</text>
                 <text x="289" y="651" class="building-label">B</text>
                 <text x="289" y="729" class="building-label">C</text>
-                <path d="M170 780H276V826H170Z" class="building campus-blocks"/>
+                <rect x="170" y="780" width="106" height="46" rx="10" class="map-building"/>
                 <text x="223" y="803" class="building-label">H</text>
-                <path d="M448 526H566V614H448ZM448 688H566V818H448Z" class="building campus-blocks"/>
+                <rect x="448" y="526" width="118" height="88" rx="10" class="map-building"/>
+                <rect x="448" y="688" width="118" height="130" rx="10" class="map-building"/>
                 <text x="507" y="570" class="building-label small">GD1</text>
                 <text x="507" y="753" class="building-label">I</text>
-                <path d="M150 456V840M426 456V840M150 766H426" class="campus-walkway"/>
-                <path d="M150 620H566" class="campus-walkway" style="stroke-width:12px"/>
-                <rect x="520" y="438" width="90" height="62" rx="4" class="parking-bay"/>
-                <g class="map-pin" transform="translate(565 469)"><circle r="16"/><path d="M-10 3h20M-7 3l3-7h8l4 7M-5 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm10 0a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"/><text x="-24" y="6" text-anchor="end">Bãi xe</text></g>
-                <g class="map-gate" transform="translate(625 469)"><path d="M0-20V20M-12-20V20"/><text x="-22" y="-27" text-anchor="end">Cổng bãi xe</text></g>
-                <g class="map-gate" transform="translate(625 650)"><path d="M0-20V20M-12-20V20"/><text x="-22" y="5" text-anchor="end">Cổng chính</text></g>
+                <rect x="520" y="438" width="90" height="62" rx="10" class="parking-bay"/>
+                <g class="parking-marker" transform="translate(565 469)"><circle r="14"/><text class="parking-letter" y="1">P</text><text class="parking-text" x="-22" y="5" text-anchor="end">Bãi xe</text></g>
+                <g class="map-gate" transform="translate(625 469)"><path d="M0-18V18M-10-18V18"/><text x="-18" y="-24" text-anchor="end">Cổng bãi xe</text></g>
+                <g class="map-gate" transform="translate(625 650)"><path d="M0-18V18M-10-18V18"/><text x="-18" y="-24" text-anchor="end">Cổng chính</text></g>
               </g>
 
               <g class="map-route" data-map-route="lhp">
@@ -132,7 +135,6 @@
                 <path d="M648 469H565" class="route-line route-line-orange" marker-end="url(#arrow-orange)"/>
               </g>
             </svg>
-            <div class="map-route-label" id="map-route-label">Nguyễn Văn Cừ → Cổng bãi xe HCMUS</div>
           </div>
         </div>
       </section>

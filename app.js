@@ -103,11 +103,6 @@ function selectRoute(route) {
     tab.setAttribute("aria-selected", String(selected));
   });
   document.querySelectorAll("[data-map-route]").forEach((path) => path.classList.toggle("active", path.dataset.mapRoute === route));
-  const campusMap = document.querySelector("#campus-map");
-  campusMap.dataset.activeRoute = route;
-  document.querySelector("#map-route-label").textContent = route === "lhp"
-    ? "Hầm xe LHP · Cổng chính HCMUS"
-    : "Nguyễn Văn Cừ · Cổng bãi xe HCMUS";
 }
 document.querySelectorAll(".route-tab").forEach((tab) => tab.addEventListener("click", () => selectRoute(tab.dataset.route)));
 selectRoute("hcmus");

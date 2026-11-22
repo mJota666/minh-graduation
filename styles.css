@@ -79,27 +79,23 @@ h2 { margin: 0; font-size: clamp(3rem, 6vw, 6.5rem); line-height: .95; letter-sp
 .map-sidewalk { fill: #dceaf0; stroke: #adc3cf; stroke-width: 2; }
 .road-divider { fill: none; stroke: #eaf7fb; stroke-width: 4; stroke-dasharray: 24 22; opacity: .8; }
 .road-label { fill: rgba(255,255,255,.82); font-size: 17px; font-weight: 600; letter-spacing: 5px; text-anchor: middle; }
-.north-mark path { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-.north-mark text { fill: var(--ink); font-size: 11px; font-weight: 600; text-anchor: middle; }
-.site-boundary { fill: #c4deea; stroke: #638aa0; stroke-width: 2; }
+.site-boundary { fill: #cfe5ef; stroke: #86aabb; stroke-width: 1.5; }
 .middle-site { fill: #d7e7ee; }
 .hcmus-site { fill: #c8e4ef; }
-.campus-name { fill: var(--ink); font-family: "Lora", serif; font-size: 23px; font-weight: 600; }
-.building { stroke: #688b9d; stroke-width: 2; stroke-linejoin: round; }
-.building-lhp { fill: #5c9cbc; }
-.building-middle { fill: #e5f0f4; }
-.building-f { fill: #edf6f8; }
-.campus-blocks { fill: #f7fbfc; }
+.campus-name { fill: var(--ink); font-family: "Lora", serif; font-size: 22px; font-weight: 600; }
+.map-building { fill: #f8fcff; stroke: #6f97ab; stroke-width: 2; }
 .parking-bay { fill: #abc8d5; stroke: #638aa0; stroke-width: 2; stroke-dasharray: 6 5; }
-.courtyard { fill: #7fb6cb; stroke: #638aa0; stroke-width: 2; }
-.middle-label, .area-label, .building-label { fill: #304f62; font-size: 14px; font-weight: 600; }
-.area-label { font-size: 12px; letter-spacing: 2px; text-anchor: middle; }
-.building-label { font-size: 16px; text-anchor: middle; dominant-baseline: middle; }
-.building-label.small { font-size: 12px; }
+.place-label, .place-number, .building-label { fill: #17364a; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+.place-label { font-size: 18px; }
+.place-label.small { font-size: 16px; }
+.place-number { fill: #5a788a; font-size: 13px; }
+.building-label { font-size: 17px; }
+.building-label.small { font-size: 13px; }
 .campus-walkway { fill: none; stroke: #e8f4f8; stroke-width: 22; stroke-linecap: square; }
-.map-pin circle { fill: var(--ink); stroke: white; stroke-width: 4; }
-.map-pin path { fill: none; stroke: white; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-.map-pin text, .map-gate text { fill: var(--ink); font-size: 13px; font-weight: 600; paint-order: stroke; stroke: #edf7fa; stroke-width: 5px; stroke-linejoin: round; }
+.campus-corridor { stroke-width: 12px; }
+.parking-marker circle { fill: var(--ink); stroke: white; stroke-width: 3; }
+.parking-letter { fill: white; font-size: 15px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+.parking-text, .map-gate text { fill: var(--ink); font-size: 12px; font-weight: 600; paint-order: stroke; stroke: #edf7fa; stroke-width: 4px; stroke-linejoin: round; }
 .map-gate path { fill: none; stroke: var(--ink); stroke-width: 4; }
 .map-route { opacity: 0; transition: opacity .35s; pointer-events: none; }
 .map-route.active { opacity: 1; }
@@ -107,7 +103,6 @@ h2 { margin: 0; font-size: clamp(3rem, 6vw, 6.5rem); line-height: .95; letter-sp
 .route-line-red { stroke: #0d7180; }
 .route-line-blue { stroke: #2563a6; }
 .route-line-orange { stroke: #20a6c7; }
-.map-route-label { position: absolute; z-index: 6; left: 1rem; right: 1rem; bottom: 1rem; padding: .8rem 1rem; border-radius: 6px; background: rgba(4,27,45,.9); color: white; font-size: .76rem; line-height: 1.35; backdrop-filter: blur(7px); }
 @keyframes route-flow { to { stroke-dashoffset: -24; } }
 .closing { padding: clamp(6rem, 13vw, 13rem) 1.5rem; text-align: center; background: var(--orange); color: white; }
 .closing h2 { max-width: 900px; margin-inline: auto; font-size: clamp(2.8rem, 7vw, 7rem); }
