@@ -99,6 +99,27 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
+let campusMap;
+let campusMapPromise;
+function showCampusMap(route) {
+  const container = document.querySelector("#campus-map");
+  if (!campusMapPromise) {
+    campusMapPromise = import("./campus-map.js")
+      .then(({ createCampusMap }) => {
+        campusMap = createCampusMap(container);
+        return campusMap;
+      })
+      .catch(() => {
+        container.querySelector(".map-loading").textContent = "Không tải được bản đồ 3D.";
+        return null;
+      });
+  }
+  campusMapPromise.then((map) => {
+    if (!map) return;
+    map.setRoute(route);
+  });
+}
+
 function selectRoute(route) {
   const rideMode = route === "ride";
   document.querySelectorAll(".route-tab").forEach((tab) => {
@@ -106,10 +127,10 @@ function selectRoute(route) {
     tab.classList.toggle("active", selected);
     tab.setAttribute("aria-selected", String(selected));
   });
-  document.querySelectorAll("[data-map-route]").forEach((path) => path.classList.toggle("active", path.dataset.mapRoute === route));
   document.querySelector("#ride-destination").hidden = !rideMode;
   document.querySelector(".map-shell").hidden = rideMode;
   document.querySelector("#journey").classList.toggle("ride-mode", rideMode);
+  if (!rideMode) requestAnimationFrame(() => showCampusMap(route));
 }
 document.querySelectorAll(".route-tab").forEach((tab) => tab.addEventListener("click", () => selectRoute(tab.dataset.route)));
 document.querySelector("#copy-destination").addEventListener("click", async (event) => {

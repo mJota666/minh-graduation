@@ -80,41 +80,25 @@ h2 { margin: 0; font-size: clamp(3rem, 6vw, 6.5rem); line-height: .95; letter-sp
 .ride-destination button { flex: none; padding: .55rem .7rem; border: 0; border-radius: 999px; color: var(--ink); background: var(--gold); font-size: .72rem; font-weight: 700; cursor: pointer; }
 .map-shell { width: min(100%, 640px); align-self: center; justify-self: center; margin: 3rem 4vw 3rem 0; background: #dcecf4; color: var(--ink); border-radius: 12px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,.3); }
 .map-shell[hidden] { display: none; }
-.map-toolbar { height: 56px; padding: 0 1.2rem; display: flex; align-items: center; justify-content: space-between; background: var(--paper); font-weight: 600; }
+.map-toolbar { min-height: 64px; padding: .7rem 1.2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: var(--paper); font-weight: 600; }
+.map-toolbar > div { display: grid; gap: .12rem; }
+.map-toolbar small { color: rgba(7,26,47,.5); font-size: .65rem; font-weight: 500; }
 .map-link { min-height: 38px; display: inline-flex; align-items: center; gap: .45rem; padding: .55rem .85rem; border-radius: 999px; color: white; background: #1689bd; font-size: .72rem; font-weight: 700; text-decoration: none; box-shadow: 0 8px 18px rgba(22,137,189,.28); transition: transform .2s, background .2s; }
 .map-link svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 2; }
 .map-link:hover { background: #0f709f; transform: translateY(-1px); }
-.map-canvas { position: relative; aspect-ratio: 8 / 9; overflow: hidden; isolation: isolate; background: #dbeaf2; }
-.campus-diagram { width: 100%; height: 100%; display: block; font-family: "Be Vietnam Pro", sans-serif; }
-.map-ground { fill: #dbeaf2; }
-.map-road { fill: #263e50; }
-.map-sidewalk { fill: #dceaf0; stroke: #adc3cf; stroke-width: 2; }
-.road-divider { fill: none; stroke: #eaf7fb; stroke-width: 4; stroke-dasharray: 24 22; opacity: .8; }
-.road-label { fill: rgba(255,255,255,.82); font-size: 17px; font-weight: 600; letter-spacing: 5px; text-anchor: middle; }
-.site-boundary { fill: #cfe5ef; stroke: #86aabb; stroke-width: 1.5; }
-.middle-site { fill: #d7e7ee; }
-.hcmus-site { fill: #c8e4ef; }
-.campus-name { fill: var(--ink); font-family: "Lora", serif; font-size: 22px; font-weight: 600; }
-.map-building { fill: #f8fcff; stroke: #6f97ab; stroke-width: 2; }
-.parking-bay { fill: #abc8d5; stroke: #638aa0; stroke-width: 2; stroke-dasharray: 6 5; }
-.place-label, .place-number, .building-label { fill: #17364a; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
-.place-label { font-size: 18px; }
-.place-label.small { font-size: 16px; }
-.place-number { fill: #5a788a; font-size: 13px; }
-.building-label { font-size: 17px; }
-.building-label.small { font-size: 13px; }
-.campus-walkway { fill: none; stroke: #e8f4f8; stroke-width: 22; stroke-linecap: square; }
-.campus-corridor { stroke-width: 12px; }
-.parking-marker circle { fill: var(--ink); stroke: white; stroke-width: 3; }
-.parking-letter { fill: white; font-size: 15px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
-.parking-text, .map-gate text { fill: var(--ink); font-size: 12px; font-weight: 600; paint-order: stroke; stroke: #edf7fa; stroke-width: 4px; stroke-linejoin: round; }
-.map-gate path { fill: none; stroke: var(--ink); stroke-width: 4; }
-.map-route { opacity: 0; transition: opacity .35s; pointer-events: none; }
-.map-route.active { opacity: 1; }
-.route-line { fill: none; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 5 14; animation: route-flow 1s linear infinite; paint-order: stroke; }
-.route-line-lhp { stroke: #2563eb; }
-.route-line-hcmus { stroke: #008aa6; }
-@keyframes route-flow { to { stroke-dashoffset: -24; } }
+.map-canvas { position: relative; aspect-ratio: 6 / 5; overflow: hidden; isolation: isolate; background: #f6efe0; }
+.map-canvas[data-route="lhp"] { aspect-ratio: 4 / 5; }
+.map-canvas canvas { width: 100%; height: 100%; display: block; touch-action: pan-y; }
+.map-loading { position: absolute; inset: 0; display: grid; place-items: center; color: rgba(7,26,47,.55); font-size: .75rem; }
+.map-loading[hidden] { display: none; }
+.map-legend { min-height: 44px; padding: .65rem 1.1rem; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .7rem 1rem; color: rgba(7,26,47,.62); background: var(--paper); font-size: .68rem; }
+.map-legend span { display: inline-flex; align-items: center; gap: .4rem; }
+.map-legend { --route-color: #087c89; }
+.map-canvas[data-route="lhp"] + .map-legend { --route-color: #255bcb; }
+.map-legend i { width: 1.3rem; border-top: 3px solid var(--route-color); }
+.map-legend .walk-line { border-top-style: dashed; }
+.map-legend b { width: 1.25rem; height: 1.25rem; display: grid; place-items: center; border-radius: 50%; color: white; background: var(--ink); font-size: .58rem; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 .closing { min-height: 100svh; padding: clamp(4rem, 8vw, 8rem) 1.5rem; text-align: center; background: var(--orange); color: white; }
 .closing-photo { position: relative; width: min(860px, 90vw); aspect-ratio: 4 / 3; margin: clamp(2.5rem, 5vw, 5rem) auto 0; isolation: isolate; }
 .closing-photo::before, .closing-photo::after { content: ""; position: absolute; z-index: -1; border-radius: 48% 52% 46% 54% / 58% 43% 57% 42%; }
@@ -150,8 +134,11 @@ h2 { margin: 0; font-size: clamp(3rem, 6vw, 6.5rem); line-height: .95; letter-sp
   .calendar-day.event-day::after { top: 1.7rem; padding-top: .85rem; background-size: 1rem .72rem; font-size: .78rem; }
   .card-countdown { margin-top: .75rem; padding: .7rem .45rem; }
   .card-countdown strong { font-size: 1.05rem; }
-  .map-toolbar { padding: 0 .9rem; }
+  .journey-copy { padding: 3.5rem 1.2rem 2.5rem; }
+  .map-toolbar { padding: .65rem .8rem; }
+  .map-toolbar small { font-size: .58rem; }
   .map-link { font-size: .68rem; }
+  .map-legend { padding-inline: .65rem; font-size: .62rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
