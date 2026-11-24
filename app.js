@@ -22,21 +22,19 @@ function vietnamToday() {
   return Object.fromEntries(parts.filter(({ type }) => type !== "literal").map(({ type, value }) => [type, Number(value)]));
 }
 
+const [year, eventMonth, eventDay] = CONFIG.ceremonyAt.slice(0, 10).split("-").map(Number);
+document.querySelector("#ceremony-date").textContent = `${eventDay} tháng ${eventMonth} năm ${year}`;
+
 function renderEventCalendar() {
   const calendar = document.querySelector("#event-calendar");
-  const [year, eventMonth, eventDay] = CONFIG.ceremonyAt.slice(0, 10).split("-").map(Number);
   const month = eventMonth - 1;
   const today = vietnamToday();
-  const header = document.createElement("strong");
-  header.className = "calendar-month";
-  const monthLabel = document.createElement("span");
-  monthLabel.textContent = `${eventDay} · Tháng ${month + 1} / ${year}`;
-  header.append(monthLabel);
+  const content = [];
   if (today.year === year && today.month === month + 1) {
     const todayLabel = document.createElement("span");
     todayLabel.className = "calendar-today-note";
     todayLabel.textContent = `${today.day} · today`;
-    header.append(todayLabel);
+    content.push(todayLabel);
   }
   const grid = document.createElement("div");
   grid.className = "calendar-grid";
@@ -61,7 +59,7 @@ function renderEventCalendar() {
     }
     grid.append(cell);
   });
-  calendar.replaceChildren(header, grid);
+  calendar.replaceChildren(...content, grid);
 }
 
 renderEventCalendar();
