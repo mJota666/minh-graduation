@@ -104,7 +104,7 @@ let campusMapPromise;
 function showCampusMap(route) {
   const container = document.querySelector("#campus-map");
   if (!campusMapPromise) {
-    campusMapPromise = import("./campus-map.js")
+    campusMapPromise = import("./campus-map.js?v=20261124.1")
       .then(({ createCampusMap }) => {
         campusMap = createCampusMap(container);
         return campusMap;
